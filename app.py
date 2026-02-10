@@ -187,7 +187,6 @@ def clear_data():
     save_students([])
     save_history([])
     return jsonify({'success': True})
-
 if __name__ == '__main__':
     init_data_files()
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -1,0 +1,465 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+    color: #ccd6f6;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+
+/* 容器 */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部 */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #64ffda 0%, #4facfe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+    text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #8892b0;
+    letter-spacing: 2px;
+}
+
+/* 主要内容 */
+.main {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+/* 面板通用样式 */
+.panel {
+    background: rgba(23, 42, 69, 0.8);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #64ffda, transparent);
+}
+
+.panel-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #64ffda;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* 控制面板 */
+.control-panel {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* 导入面板 */
+.import-panel {
+    flex: 1;
+}
+
+.file-input {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.file-input input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.file-input label {
+    display: block;
+    padding: 15px;
+    background: rgba(100, 255, 218, 0.1);
+    border: 2px dashed rgba(100, 255, 218, 0.5);
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.file-input label:hover {
+    background: rgba(100, 255, 218, 0.2);
+    border-color: #64ffda;
+    box-shadow: 0 0 15px rgba(100, 255, 218, 0.3);
+}
+
+.result {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.result.success {
+    background: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.result.error {
+    background: rgba(255, 100, 100, 0.1);
+    color: #ff6464;
+    border: 1px solid rgba(255, 100, 100, 0.3);
+}
+
+/* 控制按钮 */
+.control-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.btn {
+    flex: 1;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #64ffda, #4facfe);
+    color: #0a192f;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.5);
+}
+
+.btn-call {
+    background: linear-gradient(135deg, #4facfe, #00f2fe);
+    color: #0a192f;
+    font-size: 1.2rem;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(79, 172, 254, 0.4);
+}
+
+.btn-call:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(79, 172, 254, 0.6);
+}
+
+.btn-secondary {
+    background: rgba(136, 146, 176, 0.2);
+    color: #8892b0;
+    border: 1px solid rgba(136, 146, 176, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(136, 146, 176, 0.3);
+    color: #ccd6f6;
+    transform: translateY(-2px);
+}
+
+/* 显示面板 */
+.display-panel {
+    flex: 2;
+    min-width: 400px;
+}
+
+.call-display {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.display-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.call-count {
+    background: rgba(100, 255, 218, 0.1);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: #64ffda;
+    border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
+.call-result {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 25, 47, 0.5);
+    border-radius: 8px;
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.result-placeholder {
+    color: #8892b0;
+    font-size: 1.2rem;
+}
+
+.call-name {
+    font-size: 4rem;
+    font-weight: 700;
+    color: #64ffda;
+    text-shadow: 0 0 30px rgba(100, 255, 218, 0.6);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.call-info {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #8892b0;
+}
+
+/* 底部面板 */
+.bottom-panel {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.bottom-panel .panel {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* 历史记录 */
+.history-list {
+    max-height: 200px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.history-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: rgba(10, 25, 47, 0.5);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: rgba(100, 255, 218, 0.3);
+    border-radius: 3px;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 255, 218, 0.5);
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(10, 25, 47, 0.5);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    border-left: 3px solid #64ffda;
+    transition: all 0.3s ease;
+}
+
+.history-item:hover {
+    background: rgba(10, 25, 47, 0.8);
+    transform: translateX(5px);
+}
+
+.history-name {
+    font-weight: 500;
+    color: #ccd6f6;
+}
+
+.history-time {
+    font-size: 0.8rem;
+    color: #8892b0;
+}
+
+.history-placeholder,
+.stats-placeholder {
+    color: #8892b0;
+    text-align: center;
+    padding: 40px 0;
+}
+
+/* 统计内容 */
+.stats-content {
+    margin-bottom: 20px;
+}
+
+.stats-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+}
+
+.stats-item:last-child {
+    border-bottom: none;
+}
+
+.stats-label {
+    color: #8892b0;
+}
+
+.stats-value {
+    color: #64ffda;
+    font-weight: 600;
+}
+
+.stats-chart {
+    max-height: 200px;
+    margin-top: 20px;
+}
+
+/* 动画效果 */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px rgba(100, 255, 218, 0.5);
+    }
+    to {
+        text-shadow: 0 0 30px rgba(100, 255, 218, 0.8), 0 0 40px rgba(100, 255, 218, 0.5);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+    
+    .control-panel,
+    .display-panel {
+        min-width: 100%;
+    }
+    
+    .bottom-panel {
+        flex-direction: column;
+    }
+    
+    .bottom-panel .panel {
+        min-width: 100%;
+    }
+    
+    .call-name {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .title {
+        font-size: 2rem;
+    }
+    
+    .panel {
+        padding: 15px;
+    }
+    
+    .call-result {
+        padding: 20px;
+    }
+    
+    .call-name {
+        font-size: 2rem;
+    }
+}

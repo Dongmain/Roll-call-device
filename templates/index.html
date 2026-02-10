@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技感点名器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1 class="title">科技感点名器</h1>
+            <div class="subtitle">随机点名 · 历史记录 · 数据统计</div>
+        </header>
+
+
+        <!-- 主要内容 -->
+        <main class="main">
+            <!-- 左侧：导入和控制 -->
+            <section class="control-panel">
+                <!-- 导入区域 -->
+                <div class="panel import-panel">
+                    <h2 class="panel-title">导入学生名单</h2>
+                    <form id="import-form" enctype="multipart/form-data">
+                        <div class="file-input">
+                            <input type="file" id="file" name="file" accept=".xlsx,.xls,.txt" required>
+                            <label for="file">选择文件 (Excel或TXT)</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">导入</button>
+                        <div id="import-result" class="result"></div>
+                    </form>
+                </div>
+
+                <!-- 控制按钮 -->
+                <div class="panel control-buttons">
+                    <button id="call-btn" class="btn btn-call">开始点名</button>
+                    <button id="clear-btn" class="btn btn-secondary">清空数据</button>
+                </div>
+            </section>
+
+            <!-- 右侧：点名显示 -->
+            <section class="display-panel">
+                <div class="call-display">
+                    <div class="display-header">
+                        <h2 class="panel-title">点名结果</h2>
+                        <div id="call-count" class="call-count">已点名: 0</div>
+                    </div>
+                    <div id="call-result" class="call-result">
+                        <div class="result-placeholder">点击开始点名</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 底部：历史记录和统计 -->
+        <section class="bottom-panel">
+            <!-- 历史记录 -->
+            <div class="panel history-panel">
+                <h2 class="panel-title">点名历史</h2>
+                <div id="history-list" class="history-list">
+                    <div class="history-placeholder">暂无历史记录</div>
+                </div>
+            </div>
+
+            <!-- 统计数据 -->
+            <div class="panel stats-panel">
+                <h2 class="panel-title">数据统计</h2>
+                <div id="stats-content" class="stats-content">
+                    <div class="stats-placeholder">暂无统计数据</div>
+                </div>
+                <canvas id="stats-chart" class="stats-chart"></canvas>
+            </div>
+        </section>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
